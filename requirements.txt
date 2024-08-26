@@ -1,0 +1,6 @@
+asgiref==3.8.1
+black==24.8.0
+click==8.1.7
+Django==5.1
+pathspec==0.12.1
+sqlparse==0.5.1
