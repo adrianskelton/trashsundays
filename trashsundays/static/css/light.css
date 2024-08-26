@@ -1,0 +1,16 @@
+
+
+body {
+    background-color: white;
+    color: black;
+}
+
+.navbar {
+    background-color: lightgray;
+}
+
+.nav-link {
+    color: black;
+}
+
+/* Add more light mode styles as needed */

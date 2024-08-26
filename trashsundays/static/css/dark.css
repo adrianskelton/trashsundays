@@ -1,0 +1,14 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.navbar {
+    background-color: darkgray;
+}
+
+.nav-link {
+    color: white;
+}
+
+/* Add more dark mode styles as needed */

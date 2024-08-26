@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Trash Sundays</title>
+    <title>Trash Sundays</title>
+    <link id="theme-style" rel="stylesheet" href="{% static 'css/light.css' %}">
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -14,49 +16,53 @@
         <div class="container-fluid">
             <!-- Logo -->
             <a class="navbar-brand" href="#">
-                <img src="..images/logo.png" alt="Logo" class="d-inline-block align-top">
+                <img src="{% static 'trashsundays/images/logo.png' %}" alt="Logo" class="d-inline-block align-top">
                 Trash Sundays
             </a>
-            <!-- Hamburger Menu -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- Navbar Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Menu Item 1</a>
+                        <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Menu Item 2</a>
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Menu Item 3</a>
-                    </li>
-                    <!-- Login/Logout Links -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        <a class="nav-link" href="#">Login/Logout</a>
                     </li>
                 </ul>
             </div>
+            <button id="theme-toggle" class="btn btn-secondary">Toggle Dark Mode</button>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container mt-5">
-        <h1>Welcome to Trash Sundays</h1>
-        <p class="lead">Log and track the trash you've picked up and see it on the map!</p>
-    </div>
+    <!-- Content goes here -->
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const themeStyle = document.getElementById('theme-style');
+
+        toggleButton.addEventListener('click', () => {
+            if (themeStyle.getAttribute('href') === '{% static "css/light.css" %}') {
+                themeStyle.setAttribute('href', '{% static "css/dark.css" %}');
+                toggleButton.textContent = 'Toggle Light Mode';
+            } else {
+                themeStyle.setAttribute('href', '{% static "css/light.css" %}');
+                toggleButton.textContent = 'Toggle Dark Mode';
+            }
+        });
+    </script>
 </body>
 </html>
