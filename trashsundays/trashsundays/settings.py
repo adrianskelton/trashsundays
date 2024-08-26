@@ -27,10 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+LOGIN_REDIRECT_URL = 'profile'
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
