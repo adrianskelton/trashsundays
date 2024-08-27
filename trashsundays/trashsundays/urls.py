@@ -7,7 +7,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),  # Include your user-related URLs
     path('', user_views.home, name='home'),  # Home page view
-    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('about/', auth_views.LoginView.as_view(template_name='about.html'), name='about'),
+    path('contact/', auth_views.LoginView.as_view(template_name='contact.html'), name='contact'),
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='registration/logged_out.html'), name='logout'),
     path('', include('django.contrib.auth.urls')),  # Django's built-in auth URLs
 ]

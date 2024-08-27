@@ -1,0 +1,9 @@
+asgiref==3.8.1
+black==24.8.0
+click==8.1.7
+Django==5.1
+gunicorn==23.0.0
+pathspec==0.12.1
+pillow==10.4.0
+psycopg2==2.9.9
+sqlparse==0.5.1
