@@ -1,4 +1,5 @@
 {% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,7 @@
         <div class="container-fluid">
             <!-- Logo -->
             <a class="navbar-brand" href="#">
-                <img src="{% static 'trashsundays/images/logo.png' %}" alt="Logo" class="d-inline-block align-top">
+                <img id="logo" src="{% static 'trashsundays/images/logo.png' %}" alt="Logo" class="d-inline-block align-top">
                 Trash Sundays
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,16 +54,20 @@
     <script>
         const toggleButton = document.getElementById('theme-toggle');
         const themeStyle = document.getElementById('theme-style');
+        const logo = document.getElementById('logo');
 
         toggleButton.addEventListener('click', () => {
             if (themeStyle.getAttribute('href') === '{% static "css/light.css" %}') {
                 themeStyle.setAttribute('href', '{% static "css/dark.css" %}');
+                logo.setAttribute('src', '{% static "trashsundays/images/logo_dark.png" %}');
                 toggleButton.textContent = 'Toggle Light Mode';
             } else {
                 themeStyle.setAttribute('href', '{% static "css/light.css" %}');
+                logo.setAttribute('src', '{% static "trashsundays/images/logo.png" %}');
                 toggleButton.textContent = 'Toggle Dark Mode';
             }
         });
     </script>
 </body>
 </html>
+
