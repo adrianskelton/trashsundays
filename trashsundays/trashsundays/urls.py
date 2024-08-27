@@ -11,5 +11,6 @@ urlpatterns = [
     path('contact/', auth_views.LoginView.as_view(template_name='contact.html'), name='contact'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='registration/logged_out.html'), name='logout'),
+    path('register/', user_views.register, name='register'),
     path('', include('django.contrib.auth.urls')),  # Django's built-in auth URLs
 ]
