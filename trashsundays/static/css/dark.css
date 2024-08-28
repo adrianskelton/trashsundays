@@ -7,10 +7,17 @@ body {
     background-color:#101010;
 }
 
-.nav-link {
+.nav-link, .nav-link.active {
     color: white;
 }
 
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: #FF5722;
+}
+
+.active {
+    color: white;
+}
 
 
 /* Add more dark mode styles as needed */
