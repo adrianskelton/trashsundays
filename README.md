@@ -1,6 +1,6 @@
 # Trash Sundays
 
-![Trash Sundays preview](static/media/readme/responsive.webp)
+![Trash Sundays preview](trashsundays/media/readme/screen_home.png)
 
 [Live site on render](https://nordic-art-22f58cb8c917.herokuapp.com/)
 
