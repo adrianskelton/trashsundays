@@ -4,20 +4,21 @@ body {
 }
 
 .navbar {
-    background-color:#101010;
+    background-color: #101010;
 }
 
-.nav-link, .nav-link.active {
-    color: white;
+.nav-link {
+    color: white; /* Default color for nav links */
 }
 
-.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
-    color: #FF5722;
+/* Styles for nav links when focused or hovered */
+.nav-link:focus, 
+.nav-link:hover {
+    color: #FF5722 !important;
 }
 
-.active {
-    color: white;
+/* Styles for nav links with specific classes */
+.navbar-nav .nav-link.aktiv,
+.navbar-nav .nav-link.show {
+    color: #FF5722 !important; /* Ensure these have higher specificity */
 }
-
-
-/* Add more dark mode styles as needed */

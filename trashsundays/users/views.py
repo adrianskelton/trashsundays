@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegisterForm
+from .forms import ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 
 def register(request):
@@ -27,11 +28,29 @@ def login_view(request):
                 return redirect('home')  # Redirect to a success page.
     else:
         form = AuthenticationForm()
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'users/login.html', {'form': form})
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile_view')
+    else:
+        form = ProfileUpdateForm(instance=request.user.profile)
+    
+    return render(request, 'users/profile.html', {'form': form})
 
 def home(request):
     return render(request, 'home.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+
+def profile_view(request):
+    return render(request, 'users/profile.html')
+

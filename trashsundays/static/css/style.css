@@ -31,3 +31,14 @@ h1 {
     font-size: 32px;
 }
 
+.inline {display: inline;} /* Use so headings don't have linebreak */
+
+/* Image style settings */
+
+.profile-image {
+    max-width: 200px;
+}
+
+.home-image {
+    max-width: fit-content;
+}
