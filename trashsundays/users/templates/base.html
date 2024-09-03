@@ -21,8 +21,7 @@
         <div class="container-fluid">
             <!-- Logo -->
             <a class="navbar-brand" href="{% url 'home' %}">
-                <img id="logo" src="{% static 'trashsundays/images/logo.png' %}" alt="Logo" class="d-inline-block align-top">
-            </a>
+                <img id="logo" src="https://i.ibb.co/B3dqHGj/logo.png"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -73,14 +72,14 @@
         toggleButton.addEventListener('click', () => {
             if (themeStyle.getAttribute('href') === '{% static "css/light.css" %}') {
                 themeStyle.setAttribute('href', '{% static "css/dark.css" %}');
-                logo.setAttribute('src', '{% static "trashsundays/images/logo_dark.png" %}');
+                logo.setAttribute('src', 'https://i.ibb.co/nnCs5Hy/logo-dark.png');
                 toggleButton.textContent = 'Toggle Light Mode';
             } else {
                 themeStyle.setAttribute('href', '{% static "css/light.css" %}');
-                logo.setAttribute('src', '{% static "trashsundays/images/logo.png" %}');
+                logo.setAttribute('src', 'https://i.ibb.co/B3dqHGj/logo.png');
                 toggleButton.textContent = 'Toggle Dark Mode';
             }
         });
     </script>
 </body>
-</html>
+</html>                
