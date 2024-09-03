@@ -1,6 +1,5 @@
 {% extends "base.html" %} {% block content %}
-<div class="container-fluid p-4">
-
+<div class="container-lg">
   <div class="row">
     <div class="col-lg-6 mb-4">
       <div class="card shadow-sm">
@@ -22,24 +21,21 @@
         <div class="card-body">
             <h3 class="card-title">Statistics</h3>
             <section id="hero" class="d-flex align-items-center">
-                <video autoplay muted loop id="myVideo" width="100%">
-                    <source src="media/homevideo.mp4" class="container-fluid" type="video/mp4">
-                </video>
-                <div class="container position-absolute" data-aos="fade-up" data-aos-delay="500">
+                <div class="container-fluid">
                     <p class="card-text">
-                        <strong>Total Trash Picked Up Globally:</strong>
+                        <h3>Total Trash Picked Up Globally:</h3>
                         <span class="text-success">{{ total_trash_picked_up }} liters</span>
                     </p>
-                
+  
                     <!-- Trash Picked Up by the User -->
                     <p class="card-text">
-                        <strong>Your Contribution:</strong>
+                        <h3>Your Contribution:</h3>
                         <span class="text-primary">{{ user_trash_picked_up }} liters</span>
                     </p>
                 
                     <!-- Trash Picked Up by User's Country -->
                     <p class="card-text">
-                        <strong>Trash Picked Up in {{ user_profile.location }}:</strong>
+                        <h3>Trash Picked Up in {{ user_profile.location }}:</h3>
                         <span class="text-info">{{ country_trash_picked_up }} liters</span>
                     </p>
                 </div>

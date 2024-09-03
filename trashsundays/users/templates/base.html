@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trash Sundays</title>
-    <!--google font-->
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link{% if request.path == '/' %} active{% endif %}" href="{% url 'home' %}">Home</a>
                     </li>
@@ -53,7 +53,6 @@
             <button id="theme-toggle" class="btn btn-secondary">Toggle Dark Mode</button>
         </div>
     </nav>
-    
 
     <main class="container-fluid">
         {% block content %}
@@ -62,9 +61,8 @@
     </main>
 
     <!-- Bootstrap JS and Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
-    <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-S1X9kxEBl29XK8WS6Vmd5IaU9V/4Rm3hVSJHuj5UddLkD5aV19GAV3wVmZ0N4/G8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7I1l5X7WIKXIXfbI1wrnTN3oIMWLDzkzwy" crossorigin="anonymous"></script>
 
     <!-- Theme Toggle Script -->
     <script>
@@ -86,4 +84,3 @@
     </script>
 </body>
 </html>
-

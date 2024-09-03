@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+import dj_database_url
 import os
 from pathlib import Path
 
@@ -107,6 +108,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+DATABASES["default"] = dj_database_url.parse("postgresql://trashsunday_user:7K8o2xEVawznDnM3JxHm6axTBWwacOCY@dpg-crbdpf3tq21c73chj4og-a.frankfurt-postgres.render.com/trashsunday")
+
+
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',

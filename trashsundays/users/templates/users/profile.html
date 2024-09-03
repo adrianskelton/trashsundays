@@ -6,7 +6,7 @@
         <div class="col-lg-6 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h3 class="card-title">Hey {{ user.username }}</h3>
+                    <h3 class="card-title">{{ greeting }}, {{ user.username }}</h3>
                     <p class="card-text">            <div class="col-md-4">
                         <!-- Display profile picture -->
                         {% if profile.profile_picture %}
@@ -37,26 +37,5 @@
         </div>
     </div>
 
-    <div class="container my-5">
-        <h1 class="display-4 text-center mb-4">Welcome {{ user.username }}</h1>
-        <div class="row">
-
-
-        </div>
-    </div>
-
-    <div class="mt-5">
-        <h2>Our Mission</h2>
-        <p class="lead">Our mission is simple: to reduce litter, one Sunday at a time. We believe that small actions, when multiplied by many, can transform our world. Trash Sundays is not just an initiative; it’s a movement toward a cleaner, more connected, and more mindful world.</p>
-    </div>
-
-    <div class="mt-5">
-        <h2>How is Trash Sundays Different?</h2>
-        <p class="lead">Unlike many apps that promote passive consumption, Trash Sundays encourages active participation. Instead of losing hours scrolling through social media, use that time to engage in a meaningful, hands-on activity that makes a positive impact. It’s about breaking the cycle of mindless consumption and replacing it with purposeful action.</p>
-    </div>
-
-    <div class="text-center mt-5">
-        <a href="#" class="btn btn-primary btn-lg">Join Us</a>
-    </div>
 </div>
 {% endblock %}

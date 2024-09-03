@@ -4,7 +4,7 @@ body {
 }
 
 body h1 {
-    color: rgb(255, 115, 0);
+    color: rgb(61, 61, 61);
     white-space: nowrap;
     font-family: "Bebas Neue", sans-serif !important;
     font-weight: 800;
@@ -13,16 +13,29 @@ body h1 {
 }
 
 h2 {
-    color: rgb(255, 115, 0);
+    color: rgb(61, 61, 61);
     white-space: nowrap;
     font-family: "Bebas Neue", sans-serif !important;
     font-weight: 800;
     font-style: normal;
     font-size: 32px;
+}
+
+.homevideo {
+    opacity: 50%;
 }
 
 h3 {
-    color: rgb(255, 115, 0);
+    color: rgb(61, 61, 61);
+    white-space: nowrap;
+    font-family: "Bebas Neue", sans-serif !important;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 18px;
+}
+
+.card-title {
+    color: rgb(61, 61, 61);
     white-space: nowrap;
     font-family: "Bebas Neue", sans-serif !important;
     font-weight: 800;
@@ -30,14 +43,6 @@ h3 {
     font-size: 32px;
 }
 
-.card-title {
-    color: rgb(255, 115, 0);
-    white-space: nowrap;
-    font-family: "Bebas Neue", sans-serif !important;
-    font-weight: 800;
-    font-style: normal;
-    font-size: 32px;
-}
 
 
 .inline-big {
