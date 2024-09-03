@@ -14,4 +14,6 @@ urlpatterns = [
     path('contact/', user_views.contact, name='contact'),  # Contact page view (updated to use user_views)
     path('accounts/', include('allauth.urls')),  # allauth URLs for authentication
     path('accounts/', include('django.contrib.auth.urls')),  # Django's built-in auth URLs
+    path('trashcollection/', include('trashcollection.urls')),  # Include the app URLs
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Serve media files during development
