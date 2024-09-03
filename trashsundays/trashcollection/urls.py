@@ -2,5 +2,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('log/', views.log_trash, name='log_trash'),
+    path('add/', views.add_trash_collection, name='add_trash_collection'),
 ]
