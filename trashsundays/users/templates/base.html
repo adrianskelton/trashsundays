@@ -43,14 +43,14 @@
                         {% if user.is_authenticated %}
                             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                         {% else %}
-                            <a class="nav-link" href="{% url 'account_login' %}">Login</a> /
-                            <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+                            <a class="nav-link" href="{% url 'account_login' %}">Login / Register</a>
                         {% endif %}
                     </li>
                 </ul>
             </div>
-            <button id="theme-toggle" class="btn btn-secondary">Toggle Dark Mode</button>
-        </div>
+            <button id="theme-toggle" class="btn btn-lightmode">
+                <img id="theme-icon" src="https://i.ibb.co/XC53233/dark-mode.png" alt="dark-mode" border="0">
+            </button>        </div>
     </nav>
 
     <main class="container-fluid">
@@ -68,16 +68,17 @@
         const toggleButton = document.getElementById('theme-toggle');
         const themeStyle = document.getElementById('theme-style');
         const logo = document.getElementById('logo');
+        const themeIcon = document.getElementById('theme-icon');
 
         toggleButton.addEventListener('click', () => {
             if (themeStyle.getAttribute('href') === '{% static "css/light.css" %}') {
                 themeStyle.setAttribute('href', '{% static "css/dark.css" %}');
                 logo.setAttribute('src', 'https://i.ibb.co/nnCs5Hy/logo-dark.png');
-                toggleButton.textContent = 'Toggle Light Mode';
+                themeIcon.setAttribute('src', 'https://i.ibb.co/1GRnfpK/light-mode.png');  // Change to light mode icon
             } else {
                 themeStyle.setAttribute('href', '{% static "css/light.css" %}');
                 logo.setAttribute('src', 'https://i.ibb.co/B3dqHGj/logo.png');
-                toggleButton.textContent = 'Toggle Dark Mode';
+                themeIcon.setAttribute('src', 'https://i.ibb.co/XC53233/dark-mode.png');  // Change to dark mode icon
             }
         });
     </script>
