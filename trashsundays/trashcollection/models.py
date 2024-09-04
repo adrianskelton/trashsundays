@@ -11,4 +11,11 @@ class TrashCollection(models.Model):
     def __str__(self):
         return f'{self.user.username} collected {self.bags_collected} bags'
 
+class TrashPickup(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+    picked_up_at = models.DateTimeField(auto_now_add=True)
+    trash_volume = models.FloatField()  # In liters or bags
+
 

@@ -17,6 +17,10 @@ body {
     color: #FF5722 !important;
 }
 
+.card {
+    background-color: black !important;
+}
+
 /* Styles for nav links with specific classes */
 .navbar-nav .nav-link.aktiv,
 .navbar-nav .nav-link.show {

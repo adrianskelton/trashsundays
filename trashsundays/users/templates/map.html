@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Your Trash Pickup Locations</h2>
+    <div id="map" style="height: 500px;"></div>
+</div>
+
+<!-- Include Leaflet.js -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<script>
+    // Initialize the map
+    var map = L.map('map').setView([0, 0], 2);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Get the user's trash pickup locations from Django's context
+    var locations = {{ locations|safe }};
+
+    // Add markers to the map
+    locations.forEach(function(location) {
+        L.marker([location.latitude, location.longitude]).addTo(map)
+            .bindPopup('Trash picked up here: ' + location.trash_volume + ' liters');
+    });
+
+    // Center the map around the markers
+    if (locations.length > 0) {
+        var bounds = locations.map(function(location) {
+            return [location.latitude, location.longitude];
+        });
+        map.fitBounds(bounds);
+    }
+</script>
+{% endblock %}

@@ -27,7 +27,11 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.gitpod.io',
+]
+
+ALLOWED_HOSTS = ['*', 'https://8000-adrianskelt-trashsunday-bllz10rmdde.ws-eu116.gitpod.io']
 
 LOGIN_REDIRECT_URL = 'profile'
 # Application definition

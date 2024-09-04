@@ -2,8 +2,10 @@ from django.db.models import Sum
 from django.shortcuts import render, redirect  # Ensure these are imported
 from .models import TrashCollection
 from .forms import TrashCollectionForm
+from .models import TrashPickup
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View  # Import the View class
+
 
 def profile(request):
     total_bags = TrashCollection.objects.filter(user=request.user).aggregate(Sum('bags_collected'))['bags_collected__sum'] or 0
@@ -33,3 +35,14 @@ class AddTrashCollectionView(LoginRequiredMixin, View):
             form.save()
             return redirect('profile')  # Redirect to a valid view name
         return render(request, 'add_trash_collection.html', {'form': form})
+
+#map function with leaflet.js
+
+def user_map(request):
+    user = request.user
+    locations = TrashPickup.objects.filter(user=user).values('latitude', 'longitude', 'trash_volume')
+    context = {
+        'locations': list(locations)
+    }
+    return render(request, 'map.html', context)
+
