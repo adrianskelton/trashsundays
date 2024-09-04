@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserRegisterForm
-from .forms import ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
+from .forms import UserRegisterForm, ProfileUpdateForm
+from trashcollection.models import TrashCollection  # Import the TrashCollection model
 
 def register(request):
     if request.method == 'POST':
@@ -32,6 +33,9 @@ def login_view(request):
 
 @login_required
 def profile(request):
+    # Calculate the total number of trash bags collected by the user
+    total_bags = TrashCollection.objects.filter(user=request.user).aggregate(Sum('bags_collected'))['bags_collected__sum'] or 0
+
     if request.method == 'POST':
         form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():
@@ -40,10 +44,13 @@ def profile(request):
     else:
         form = ProfileUpdateForm(instance=request.user.profile)
     
-    return render(request, 'users/profile.html', {'form': form})
+    return render(request, 'users/profile.html', {'form': form, 'total_bags': total_bags})
 
 def home(request):
-    return render(request, 'home.html')
+    # Aggregate the total amount of trash collected by all users
+    total_trash_picked_up = TrashCollection.objects.aggregate(total=Sum('bags_collected'))['total'] or 0
+
+    return render(request, 'home.html', {'total_trash_picked_up': total_trash_picked_up})
 
 def about(request):
     return render(request, 'about.html')

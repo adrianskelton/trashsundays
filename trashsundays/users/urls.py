@@ -6,5 +6,5 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
     path('accounts/', include('allauth.urls')),
-    path('trashcollection/', include('trashcollection.urls')),
+    path('trashcollection/', include('trashcollection.urls')),  # Include the URLs for the trashcollection app
 ] 

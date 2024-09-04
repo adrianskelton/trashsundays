@@ -1,8 +1,3 @@
-body {
-    background-color: #F6F6F6;
-    color: black;
-}
-
 body h1 {
     color: rgb(61, 61, 61);
     white-space: nowrap;
@@ -41,6 +36,10 @@ h3 {
     font-weight: 800;
     font-style: normal;
     font-size: 32px;
+}
+
+.btn-trashcollect {
+ background-color: black;
 }
 
 

@@ -1,8 +1,7 @@
 from django.urls import path
-from .views import TrashCollection  # Import TrashCollection from views.py
+from .views import AddTrashCollectionView  # Import the renamed class-based view
 
 urlpatterns = [
-    #path('add/', TrashCollection, name='add_trash_collection'),
-    path('add/', TrashCollection.as_view(), name='add_trash_collection'),
-
+    path('add/', AddTrashCollectionView.as_view(), name='add_trash_collection'),  # Use .as_view() for class-based views
 ]
+

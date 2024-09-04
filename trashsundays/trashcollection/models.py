@@ -10,3 +10,5 @@ class TrashCollection(models.Model):
 
     def __str__(self):
         return f'{self.user.username} collected {self.bags_collected} bags'
+
+
