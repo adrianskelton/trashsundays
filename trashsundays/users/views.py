@@ -61,3 +61,25 @@ def contact(request):
 def profile_view(request):
     return render(request, 'users/profile.html')
 
+def map_view(request):
+    # Fetch all trash pickup records
+    pickups = TrashPickup.objects.all()
+
+    # Serialize data to pass to the template
+    locations = [{
+        "latitude": pickup.latitude,
+        "longitude": pickup.longitude,
+        "trash_volume": pickup.trash_volume
+    } for pickup in pickups]
+
+    # Additional data for statistics (if needed)
+    total_trash_picked_up = pickups.aggregate(Sum('trash_volume'))['trash_volume__sum']
+    total_bags = pickups.count()
+
+    return render(request, 'map.html', {
+        'locations': locations,
+        'total_trash_picked_up': total_trash_picked_up,
+        'total_bags': total_bags,
+        # Add other context data as needed
+    })
+

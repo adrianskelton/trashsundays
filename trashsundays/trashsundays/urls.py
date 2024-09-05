@@ -4,6 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from users import views as user_views
+from trashcollection import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # Admin site URL
@@ -14,6 +15,7 @@ urlpatterns = [
     path('contact/', user_views.contact, name='contact'),  # Contact page view (updated to use user_views)
     path('accounts/', include('allauth.urls')),  # allauth URLs for authentication
     path('accounts/', include('django.contrib.auth.urls')),  # Django's built-in auth URLs
+    path('map/', views.user_map, name='user_map'),
     path('trashcollection/', include('trashcollection.urls')),  # Include the app URLs
 
 

@@ -29,6 +29,22 @@ h3 {
     font-size: 18px;
 }
 
+h4 {
+    display: inline;
+    font-family: "Bebas Neue", sans-serif !important;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+}
+
+h5 {
+    display: inline;
+    font-family: "Bebas Neue", sans-serif !important;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+}
+
 .card-title {
     color: rgb(61, 61, 61);
     white-space: nowrap;

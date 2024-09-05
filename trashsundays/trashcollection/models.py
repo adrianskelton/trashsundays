@@ -16,6 +16,6 @@ class TrashPickup(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
     picked_up_at = models.DateTimeField(auto_now_add=True)
-    trash_volume = models.FloatField()  # In liters or bags
+    trash_volume = models.FloatField()  
 
 
