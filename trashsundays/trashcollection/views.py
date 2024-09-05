@@ -39,6 +39,8 @@ class AddTrashCollectionView(LoginRequiredMixin, View):
 #map function with leaflet.js
 
 def user_map(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
     user = request.user
     locations = TrashPickup.objects.filter(user=user).values('latitude', 'longitude', 'trash_volume')
     context = {
