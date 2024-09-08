@@ -9,7 +9,7 @@ def profile_view(request):
     context = {
         'user': request.user,
     }
-    return render(request, 'users/profile.html', context)
+    return render(request, 'account/profile.html', context)
 
 
 def profile_view(request):
@@ -28,4 +28,4 @@ def profile_view(request):
         'greeting': greeting,
     }
 
-    return render(request, 'users/profile.html', context)
+    return render(request, 'account/profile.html', context)

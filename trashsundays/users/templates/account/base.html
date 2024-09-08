@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash Sundays</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <link id="theme-style" rel="stylesheet" href="{% static 'css/light.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img id="logo" class="img-fluid" src="https://i.ibb.co/B3dqHGj/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link{% if request.path == '/' %} active{% endif %}" href="{% url 'home' %}">Home</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link{% if request.path == '/about/' %} active{% endif %}" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{% if request.path == '/profile/' %} active{% endif %}" href="{% url 'profile' %}">Profile</a>
+                    </li>
+                    <!--<li class="nav-item">
+                        <a class="nav-link{% if request.path == '/contact/' %} active{% endif %}" href="{% url 'contact' %}">Contact</a>
+                    </li>-->
+                    <li class="nav-item">
+                        {% if user.is_authenticated %}
+                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        {% else %}
+                            <a class="nav-link" href="{% url 'account_login' %}">Login / Register</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+            <button id="theme-toggle" class="btn btn-lightmode">
+                <img id="theme-icon" src="https://i.ibb.co/XC53233/dark-mode.png" alt="dark-mode" border="0">
+            </button>        </div>
+    </nav>
+
+    <main class="container-fluid">
+        {% block content %}
+        <!-- Content will be injected here -->
+        {% endblock %}
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const themeStyle = document.getElementById('theme-style');
+        const logo = document.getElementById('logo');
+        const themeIcon = document.getElementById('theme-icon');
+
+        toggleButton.addEventListener('click', () => {
+            if (themeStyle.getAttribute('href') === '{% static "css/light.css" %}') {
+                themeStyle.setAttribute('href', '{% static "css/dark.css" %}');
+                logo.setAttribute('src', 'https://i.ibb.co/nnCs5Hy/logo-dark.png');
+                themeIcon.setAttribute('src', 'https://i.ibb.co/1GRnfpK/light-mode.png');  // Change to light mode icon
+            } else {
+                themeStyle.setAttribute('href', '{% static "css/light.css" %}');
+                logo.setAttribute('src', 'https://i.ibb.co/B3dqHGj/logo.png');
+                themeIcon.setAttribute('src', 'https://i.ibb.co/XC53233/dark-mode.png');  // Change to dark mode icon
+            }
+        });
+    </script>
+</body>
+</html>                

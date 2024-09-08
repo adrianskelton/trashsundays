@@ -44,7 +44,7 @@ def profile(request):
     else:
         form = ProfileUpdateForm(instance=request.user.profile)
     
-    return render(request, 'users/profile.html', {'form': form, 'total_bags': total_bags})
+    return render(request, 'account/profile.html', {'form': form, 'total_bags': total_bags})
 
 def home(request):
     # Aggregate the total amount of trash collected by all users
@@ -59,7 +59,7 @@ def contact(request):
     return render(request, 'contact.html')
 
 def profile_view(request):
-    return render(request, 'users/profile.html')
+    return render(request, 'account/profile.html')
 
 def map_view(request):
     # Fetch all trash pickup records
@@ -82,4 +82,14 @@ def map_view(request):
         'total_bags': total_bags,
         # Add other context data as needed
     })
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'register.html', {'form': form})
 

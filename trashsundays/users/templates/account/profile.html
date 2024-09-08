@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title">{{ greeting }}, {{ user.username }}</h3>
+                    <p class="card-text">            <div class="col-md-4">
+                        <!-- Display profile picture -->
+                        {% if profile.profile_picture %}
+                            <img src="{{ profile.profile_picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle profile-image">
+                            <p>{{ profile.profile_picture.url }}</p>
+                        {% else %}
+                            <img src="{% static 'default_profile_pic.png' %}" alt="Default Profile Picture" class="img-fluid rounded-circle profile-image">
+                            <p>{{ profile.profile_picture.url }}</p>
+                        {% endif %}
+                    </div></p>
+                    <div class="col-md-8">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title">Statistics</h3>
+                        <p class="card-text">
+                            Total trash picked up: {{ total_bags }} bags
+                        </p>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

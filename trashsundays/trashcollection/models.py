@@ -19,3 +19,5 @@ class TrashPickup(models.Model):
     trash_volume = models.FloatField()  
 
 
+
+

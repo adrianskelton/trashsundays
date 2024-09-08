@@ -1,11 +1,12 @@
 from django.db.models import Sum
+from django.db import models  # Add this import
+from django.contrib.auth.models import User  # Import User model
 from django.shortcuts import render, redirect  # Ensure these are imported
 from .models import TrashCollection
 from .forms import TrashCollectionForm
 from .models import TrashPickup
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View  # Import the View class
-
 
 def profile(request):
     total_bags = TrashCollection.objects.filter(user=request.user).aggregate(Sum('bags_collected'))['bags_collected__sum'] or 0
@@ -48,3 +49,5 @@ def user_map(request):
     }
     return render(request, 'map.html', context)
 
+def home(request):
+    return render(request, 'home.html')  

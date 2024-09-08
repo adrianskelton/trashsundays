@@ -2,40 +2,15 @@
 
 {% block content %}
 
+
 <div class="container">
   <h2>Your Trash Pickup Locations</h2>
   <div id="map" style="height: 500px;"></div>
 </div>
 
 <!-- Include Leaflet.js -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-      var map = L.map('map').setView([0, 0], 2);
-  
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-  
-      var locations = {{ locations|safe }};
-      
-      locations.forEach(function(location) {
-          L.marker([location.latitude, location.longitude]).addTo(map)
-              .bindPopup('Trash picked up here: ' + location.trash_volume + ' liters');
-      });
-  
-      if (locations.length > 0) {
-          var bounds = locations.map(function(location) {
-              return [location.latitude, location.longitude];
-          });
-          map.fitBounds(bounds);
-      }
-  });
-  
-  </script>
-  </div></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="  crossorigin="anonymous"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="  crossorigin="anonymous"></script>
 
 <div class="container-lg">
   <div class="row">
