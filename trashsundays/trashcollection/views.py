@@ -49,5 +49,15 @@ def user_map(request):
     }
     return render(request, 'map.html', context)
 
+def user_home_map(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    user = request.user
+    locations = TrashPickup.objects.filter(user=user).values('latitude', 'longitude', 'trash_volume')
+    context = {
+        'locations': list(locations)
+    }
+    return render(request, 'home.html', context)
+
 def home(request):
     return render(request, 'home.html')  
