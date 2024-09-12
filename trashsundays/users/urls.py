@@ -8,5 +8,6 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
     path('accounts/', include('allauth.urls')),
+    path('map/', views.user_map, name='user_map'),
     path('trashcollection/', include('trashcollection.urls')),  # Include the URLs for the trashcollection app
 ] 
