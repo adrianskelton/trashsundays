@@ -2,7 +2,7 @@
 
 ![Trash Sundays preview](trashsundays/media/readme/screen_home.png)
 
-[Live site on render](https://nordic-art-22f58cb8c917.herokuapp.com/)
+[Live site on render](https://trashsundays.onrender.com/)
 
 [Github repository](https://github.com/adrianskelton/trashsundays)
 
