@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-
 {% block content %}
-
 
 <div class="container">
   <h2>Your Trash Pickup Locations</h2>
@@ -11,6 +9,35 @@
 <!-- Include Leaflet.js -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="  crossorigin="anonymous"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="  crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      // Initialize the map and set its view
+      var map = L.map('map').setView([0, 0], 2);
+
+      // Add OpenStreetMap tiles
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      // Convert the locations data to a JavaScript array
+      var locations = {{ locations|safe }};
+      
+      // Loop through the locations and add markers to the map
+      locations.forEach(function(location) {
+          L.marker([location.latitude, location.longitude]).addTo(map)
+              .bindPopup('Trash picked up here: ' + location.trash_volume + ' liters');
+      });
+
+      // Fit the map to the bounds of the markers if any locations exist
+      if (locations.length > 0) {
+          var bounds = locations.map(function(location) {
+              return [location.latitude, location.longitude];
+          });
+          map.fitBounds(bounds);
+      }
+  });
+</script>
 
 <div class="container-lg">
   <div class="row">
@@ -54,7 +81,7 @@
       </div>
     </div>
 
-    <!-- Statistics Section -->
+    <!-- Extra Map Information Section -->
     <div class="col-sm mb-4">
       <div class="card shadow-sm">
         <div class="card-body">
@@ -120,6 +147,5 @@
     </p>
   </div>
 </div>
-
 
 {% endblock %}
